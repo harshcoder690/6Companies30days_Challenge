@@ -1,0 +1,23 @@
+class Solution {
+    /* Function to get the nth ugly number*/
+    long getNthUglyNo(int n) {
+         long[] dp = new long[n];
+          dp[0] = 1;
+          int i = 1;
+          int if2 = 0;
+          int if3 = 0;
+          int if5 = 0;
+
+          while(i < n) {
+              dp[i] = Math.min(dp[if2] * 2, Math.min(dp[if3] * 3, dp[if5] * 5));
+              if(dp[i] == dp[if2] * 2)
+                  if2++;
+              if(dp[i] == dp[if3] * 3)
+                  if3++;
+              if(dp[i] == dp[if5] * 5)
+                  if5++;
+              i++;
+          }
+          return dp[n-1];
+    }
+}
