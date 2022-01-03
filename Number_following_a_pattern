@@ -1,0 +1,25 @@
+class Solution{
+    static String printMinNumberForPattern(String str){
+        int [] ans = new int [str.length()+1];
+		int counter =1;
+		for (int i = 0; i <=str.length(); i++) {
+		
+			if(i==str.length() ||str.charAt(i)=='I') {
+				ans[i]=counter;
+				counter++;
+				for(int j=i-1; j>=0 && str.charAt(j)!='I'; j--) {
+					ans[j]=counter;
+					counter++;
+					
+				}
+				
+			}
+			
+		}
+		String s = "";
+		for (int i = 0; i < ans.length; i++) {
+			s+=ans[i];
+		}
+		return s;
+    }
+}
